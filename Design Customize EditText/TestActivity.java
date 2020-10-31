@@ -21,7 +21,6 @@ public class TestActivity extends AppCompatActivity {
         
         // Automatically call this method, when user type input in EditText
         editTextTestActivityName.addTextChangedListener(new TextWatcher() {
-            
             @Override
             public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
 
@@ -36,7 +35,6 @@ public class TestActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 // You can put your logic here after the change
             }
-            
         });
         
     }
