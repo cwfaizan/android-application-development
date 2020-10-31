@@ -20,7 +20,7 @@ public class TestActivity extends AppCompatActivity {
         /* String name = editTextTestActivityName.getText().toString(); */
         
         // Automatically call this method, when user type input in EditText
-        editTextTestActivityName.addTextChangedListener(new TextWatcher() {
+        editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
 
@@ -28,12 +28,16 @@ public class TestActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-
+                // You can do your logic after change
+                if(charSequence.length() != 0)
+                {
+                    Toast.makeText(EditTextActivity.this, charSequence.toString(), Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                // You can put your logic here after the change
+                
             }
         });
         
