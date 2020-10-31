@@ -12,7 +12,8 @@ public class TestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_text);
+        setContentView(R.layout.activity_test);
+        
         editTextTestActivityName = findViewById(R.id.editTextTestActivityName);
         
         // get Input as a Text from EditText Control
@@ -20,6 +21,7 @@ public class TestActivity extends AppCompatActivity {
         
         // Automatically call this method, when user type input in EditText
         editTextTestActivityName.addTextChangedListener(new TextWatcher() {
+            
             @Override
             public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
 
@@ -34,6 +36,7 @@ public class TestActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 // You can put your logic here after the change
             }
+            
         });
         
     }
