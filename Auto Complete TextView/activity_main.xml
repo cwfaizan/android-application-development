@@ -17,17 +17,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit ACTV"/>
-
-    <MultiAutoCompleteTextView
-        android:id="@+id/multiAutoCompleteTextViewMainActivityCountry"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Type Country Name here"/>
-
-    <Button
-        android:id="@+id/buttonMainActivitySubmitMACTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Submit MACTV"/>
     
 </LinearLayout>
