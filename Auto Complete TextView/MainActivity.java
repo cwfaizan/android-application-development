@@ -6,7 +6,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.MultiAutoCompleteTextView;
 import android.widget.Toast;
 
 import com.pf.tutorial.R;
@@ -19,9 +18,6 @@ public class MainActivity extends AppCompatActivity {
     AutoCompleteTextView autoCompleteTextViewMainActivityCountry;
     Button buttonMainActivitySubmitACTV;
 
-    MultiAutoCompleteTextView multiAutoCompleteTextViewMainActivityCountry;
-    Button buttonMainActivitySubmitMACTV;
-
     ArrayList<String> arrayListCountrySuggestion = new ArrayList<>();
 
     @Override
@@ -29,8 +25,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /* Code for Auto Complete TextView */
-        
         autoCompleteTextViewMainActivityCountry = findViewById(R.id.autoCompleteTextViewMainActivityCountry);
         buttonMainActivitySubmitACTV = findViewById(R.id.buttonMainActivitySubmitACTV);
 
@@ -56,35 +50,5 @@ public class MainActivity extends AppCompatActivity {
         // countries list have been changed and notify the adapterACTV
         arrayListCountrySuggestion.addAll( Arrays.asList("Pakistan", "USA", "Australia", "UK", "Italy", "Ireland", "Africa") );
         adapterACTV.notifyDataSetChanged();
-        
-        /* Code for Multi Auto Complete TextView */
-
-        multiAutoCompleteTextViewMainActivityCountry = findViewById(R.id.multiAutoCompleteTextViewMainActivityCountry);
-        buttonMainActivitySubmitMACTV = findViewById(R.id.buttonMainActivitySubmitMACTV);
-        
-        multiAutoCompleteTextViewMainActivityCountry.setThreshold(1);
-        ArrayAdapter<String> adapterMACTV = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, arrayListCountrySuggestion);
-        multiAutoCompleteTextViewMainActivityCountry.setAdapter(adapterMACTV);
-        multiAutoCompleteTextViewMainActivityCountry.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
-
-        multiAutoCompleteTextViewMainActivityCountry.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, "Selected Country is : " + adapterView.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        buttonMainActivitySubmitMACTV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String country = multiAutoCompleteTextViewMainActivityCountry.getText().toString();
-                Toast.makeText(MainActivity.this, "Country: " + country, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // countries list have been changed and notify the adapterMACTV
-        arrayListCountrySuggestion.addAll( Arrays.asList("Pakistan", "China", "USA", "Australia", "UK", "Italy", "Ireland", "Africa") );
-        adapterMACTV.notifyDataSetChanged();
-        
     }
 }
