@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         autoCompleteTextViewMainActivityCountry.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, "Selected Item: " + adapterView.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Selected Country is : " + adapterView.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         multiAutoCompleteTextViewMainActivityCountry.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, "Selected Item: " + adapterView.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Selected Country is : " + adapterView.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
             }
         });
 
