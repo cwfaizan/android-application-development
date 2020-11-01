@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Call Function onClick and Get State of RadioButton on RadioButton itself onClick (Method 2)
-    public void radioButtonOnClickListenerMainActivity(View view){
+    public void radioButtonOnClickListenerMainActivity(@NotNull View view){
         switch (view.getId())
         {
             case R.id.radioButtonMainActivityFemale:
