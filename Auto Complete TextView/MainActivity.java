@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /* Code for Auto Complete TextView */
+        
         autoCompleteTextViewMainActivityCountry = findViewById(R.id.autoCompleteTextViewMainActivityCountry);
         buttonMainActivitySubmitACTV = findViewById(R.id.buttonMainActivitySubmitACTV);
-        multiAutoCompleteTextViewMainActivityCountry = findViewById(R.id.multiAutoCompleteTextViewMainActivityCountry);
-        buttonMainActivitySubmitMACTV = findViewById(R.id.buttonMainActivitySubmitMACTV);
 
         autoCompleteTextViewMainActivityCountry.setThreshold(1);
         ArrayAdapter<String> adapterACTV = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, arrayListCountrySuggestion);
@@ -56,7 +56,12 @@ public class MainActivity extends AppCompatActivity {
         // countries list have been changed and notify the adapterACTV
         arrayListCountrySuggestion.addAll( Arrays.asList("Pakistan", "USA", "Australia", "UK", "Italy", "Ireland", "Africa") );
         adapterACTV.notifyDataSetChanged();
+        
+        /* Code for Multi Auto Complete TextView */
 
+        multiAutoCompleteTextViewMainActivityCountry = findViewById(R.id.multiAutoCompleteTextViewMainActivityCountry);
+        buttonMainActivitySubmitMACTV = findViewById(R.id.buttonMainActivitySubmitMACTV);
+        
         multiAutoCompleteTextViewMainActivityCountry.setThreshold(1);
         ArrayAdapter<String> adapterMACTV = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, arrayListCountrySuggestion);
         multiAutoCompleteTextViewMainActivityCountry.setAdapter(adapterMACTV);
