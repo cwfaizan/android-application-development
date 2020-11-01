@@ -42,12 +42,12 @@
         android:id="@+id/buttonMainActivityGetGenderUsingRadioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get Gender USING Group"/>
+        android:text="Get Gender Using R-Group"/>
 
     <Button
         android:id="@+id/buttonMainActivityGetGenderUsingRadioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get Gender"/>
+        android:text="Get Gender Using R-Button"/>
 
 </LinearLayout>
