@@ -10,6 +10,7 @@ import com.pf.tutorial.R;
 public class TestActivity extends AppCompatActivity {
 
     EditText editTextTestActivityName;
+    Button buttonTestActivitySubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,9 +18,16 @@ public class TestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test);
         
         editTextTestActivityName = findViewById(R.id.editTextTestActivityName);
+        buttonTestActivitySubmit = findViewById(R.id.buttonTestActivitySubmit);
         
         // get Input as a Text from EditText Control
-        /* String name = editTextTestActivityName.getText().toString(); */
+        buttonTestActivitySubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = editTextTestActivityName.getText().toString();
+                Toast.makeText(TestActivity.this, name, Toast.LENGTH_SHORT).show();
+            }
+        });
         
         // Automatically call this method, when user type input in EditText
         editTextTestActivityName.addTextChangedListener(new TextWatcher() {
@@ -33,7 +41,7 @@ public class TestActivity extends AppCompatActivity {
                 // You can do your logic after change
                 if(charSequence.length() != 0)
                 {
-                    Toast.makeText(TestActivity.this, charSequence.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(TestActivity.this, charSequence.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
 
