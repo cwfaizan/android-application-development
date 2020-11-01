@@ -77,10 +77,6 @@ public class MainActivity extends AppCompatActivity {
     {
         boolean checked = ((CheckBox) view).isChecked();
         switch (view.getId()){
-            case R.id.checkBoxMainActivityJava:
-                // Do your coding
-                Toast.makeText(MainActivity.this, "Java checked "+checked, Toast.LENGTH_SHORT).show();
-                break;
             case R.id.checkBoxMainActivityPython:
                 // Do your coding
                 Toast.makeText(MainActivity.this, "Python checked "+checked, Toast.LENGTH_SHORT).show();
