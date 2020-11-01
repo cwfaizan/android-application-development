@@ -137,6 +137,12 @@
             android:minLines="2"
             android:maxLines="5"
             android:visibility="visible"/>
+        
+        <Button
+            android:id="@+id/buttonTestActivitySubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit"/>
 
     </LinearLayout>
 
