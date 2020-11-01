@@ -1,9 +1,11 @@
+package com.pf.tutorial;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.pf.firstproject.R;
+import com.pf.tutorial.R;
 
 public class TestActivity extends AppCompatActivity {
 
