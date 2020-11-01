@@ -10,24 +10,25 @@
     tools:context=".MainActivity">
 
     <RadioGroup
+        android:id="@+id/radioGroupMainActivityGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        
+
         <RadioButton
             android:id="@+id/radioButtonMainActivityMale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
+            android:checked="true"
             android:text="Male"/>
-            
+
         <RadioButton
             android:id="@+id/radioButtonMainActivityFemale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Female"
-            android:onClick="radioButtonOnClickListenerMainActivity"/>
-            
+            android:text="Female"/>
+
         <RadioButton
             android:id="@+id/radioButtonMainActivityOther"
             android:layout_width="wrap_content"
@@ -35,13 +36,13 @@
             android:padding="10dp"
             android:text="Other"
             android:onClick="radioButtonOnClickListenerMainActivity"/>
-    
+
     </RadioGroup>
-    
+
     <Button
         android:id="@+id/buttonMainActivityGetGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Get Gender"/>
-    
+
 </LinearLayout>
