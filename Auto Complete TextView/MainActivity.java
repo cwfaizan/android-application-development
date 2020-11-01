@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // countries have added in the List and notify the adapterACTV
+        // countries list have been changed and notify the adapterACTV
         arrayListCountrySuggestion.addAll( Arrays.asList("Pakistan", "USA", "Australia", "UK", "Italy", "Ireland", "Africa") );
         adapterACTV.notifyDataSetChanged();
 
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // One new country has added and notify the adapterMACTV
+        // countries list have been changed and notify the adapterMACTV
         arrayListCountrySuggestion.addAll( Arrays.asList("Pakistan", "China", "USA", "Australia", "UK", "Italy", "Ireland", "Africa") );
         adapterMACTV.notifyDataSetChanged();
         
