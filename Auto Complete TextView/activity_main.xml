@@ -9,7 +9,8 @@
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextViewMainActivityCountry"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="Type Country Name here"/>
 
     <Button
         android:id="@+id/buttonMainActivitySubmitACTV"
@@ -20,7 +21,8 @@
     <MultiAutoCompleteTextView
         android:id="@+id/multiAutoCompleteTextViewMainActivityCountry"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="Type Country Name here"/>
 
     <Button
         android:id="@+id/buttonMainActivitySubmitMACTV"
