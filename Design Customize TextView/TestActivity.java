@@ -17,6 +17,6 @@ public class TestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test);
 
         textViewTestActivityName = findViewById(R.id.textViewTestActivityName);
-        textViewTestActivityName.setText("Hello Programming with Faizan");
+        textViewTestActivityName.setText("Welcome to Programming with Faizan");
     }
 }
