@@ -68,6 +68,7 @@
             android:gravity="center"
             android:background="#F39C12"
             android:textColor="#FFFFFF"/>
+        
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
