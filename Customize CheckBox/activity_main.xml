@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="100dp"
+    android:paddingTop="200dp"
+    tools:context=".MainActivity">
+
+    <CheckBox
+        android:id="@+id/checkBoxMainActivityJava"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Java" />
+
+    <CheckBox
+        android:id="@+id/checkBoxMainActivityPython"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Python"
+        android:onClick="checkBoxOnClickListenerMainActivity"/>
+
+    <CheckBox
+        android:id="@+id/checkBoxMainActivityPHP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="PHP"
+        android:onClick="checkBoxOnClickListenerMainActivity"/>
+
+    <CheckBox
+        android:id="@+id/checkBoxMainActivityCSharp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="C#"
+        android:onClick="checkBoxOnClickListenerMainActivity"/>
+
+    <Button
+        android:id="@+id/buttonMainActivityGetSkills"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Skills" />
+
+</LinearLayout>
