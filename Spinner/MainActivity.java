@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
         spinnerMainActivityCity = findViewById(R.id.spinnerMainActivityCity);
         buttonMainActivityGetCity = findViewById(R.id.buttonMainActivityGetCity);
 
-        ArrayAdapter<String> adapterCity = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, arrayListCity);
+        ArrayAdapter<String> adapterCity = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arrayListCity);
+        adapterCity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerMainActivityCity.setAdapter(adapterCity);
 
         buttonMainActivityGetCity.setOnClickListener(new View.OnClickListener() {
