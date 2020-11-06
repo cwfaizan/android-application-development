@@ -6,8 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -15,43 +14,37 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
-    Spinner spinnerMainActivityCity;
-    Button buttonMainActivityGetCity;
-    ArrayList<String> arrayListCity = new ArrayList();
+    ListView listViewMainActivityCountry;
+    ArrayList<String> arrayListCountry = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        spinnerMainActivityCity = findViewById(R.id.spinnerMainActivityCity);
-        buttonMainActivityGetCity = findViewById(R.id.buttonMainActivityGetCity);
+        listViewMainActivityCountry = findViewById(R.id.listViewMainActivityCountry);
 
-        ArrayAdapter<String> adapterCity = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, arrayListCity);
-        spinnerMainActivityCity.setAdapter(adapterCity);
+        ArrayAdapter<String> adapterCountry = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, arrayListCountry);
+        listViewMainActivityCountry.setAdapter(adapterCountry);
 
-        buttonMainActivityGetCity.setOnClickListener(new View.OnClickListener() {
+        listViewMainActivityCountry.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                String selectedCity = spinnerMainActivityCity.getSelectedItem().toString();
-                Toast.makeText(MainActivity.this, "Selected City is "+selectedCity, Toast.LENGTH_LONG).show();
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                String selectedCountry = adapterView.getItemAtPosition(position).toString();
+                Toast.makeText(MainActivity.this, "Selected Country is "+selectedCountry, Toast.LENGTH_LONG).show();
             }
         });
 
-        spinnerMainActivityCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        listViewMainActivityCountry.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                String selectedCity = adapterView.getItemAtPosition(position).toString();
-                Toast.makeText(MainActivity.this, "Selected City is "+selectedCity, Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+                String selectedCountry = adapterView.getItemAtPosition(position).toString();
+                Toast.makeText(MainActivity.this, "Long Selected Country is "+selectedCountry, Toast.LENGTH_LONG).show();
+                return true;
             }
         });
 
-        arrayListCity.addAll( Arrays.asList("Islamabad", "Rawalpindi", "Lahore", "Karachi", "Multan", "DG Khan") );
-        adapterCity.notifyDataSetChanged();
+        arrayListCountry.addAll( Arrays.asList("Pakistan", "India", "China", "UK", "USA", "Russia") );
+        adapterCountry.notifyDataSetChanged();
     }
 }
