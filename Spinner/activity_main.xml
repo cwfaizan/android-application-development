@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="200dp"
     tools:context=".MainActivity">
 
     <Spinner
@@ -12,10 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <Spinner
+        android:id="@+id/spinnerMainActivityCountry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <Button
-        android:id="@+id/buttonMainActivityGetCity"
+        android:id="@+id/buttonMainActivitySubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Get City"/>
+        android:text="Submit"/>
 
 </LinearLayout>
