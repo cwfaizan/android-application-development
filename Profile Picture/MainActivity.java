@@ -21,9 +21,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView imageViewProfilePicture, imageViewGallery, imageViewCamera;
-    private final int permissionRequestId= 20;
-    private AlertDialog alertDialogProfilePicture;
+    ImageView imageViewProfilePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,46 +30,55 @@ public class MainActivity extends AppCompatActivity {
 
         imageViewProfilePicture = findViewById(R.id.imageViewMainActivityProfilePicture);
 
-        imageViewProfilePicture.setOnClickListener(view -> {
-            chooseProfilePicture();
-        });
-    }
-
-    private void chooseProfilePicture() {
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
-        LayoutInflater inflater = getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.alert_dialog_profile_picture, null);
-        mBuilder.setCancelable(false);
-        mBuilder.setView(dialogView);
-
-        imageViewCamera = dialogView.findViewById(R.id.imageViewADPPCamera);
-        imageViewGallery = dialogView.findViewById(R.id.imageViewADPPGallery);
-
-        alertDialogProfilePicture = mBuilder.create();
-        alertDialogProfilePicture.show();
-
-        imageViewGallery.setOnClickListener(view -> {
-            takePictureFromGallery();
-            alertDialogProfilePicture.cancel();
-        });
-
-        imageViewCamera.setOnClickListener(view -> {
-            if (checkAndRequestPermissions()) {
-                takePictureFromCamera();
-                alertDialogProfilePicture.cancel();
+        imageViewProfilePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chooseProfilePicture();
             }
         });
     }
 
-    private  void takePictureFromGallery(){
-        Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(pickPhoto , 1);
+    private void chooseProfilePicture(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.alert_dialog_profile_picture, null);
+        builder.setCancelable(false);
+        builder.setView(dialogView);
+
+        ImageView imageViewADPPCamera = dialogView.findViewById(R.id.imageViewADPPCamera);
+        ImageView imageViewADPPGallery = dialogView.findViewById(R.id.imageViewADPPGallery);
+
+        AlertDialog alertDialogProfilePicture = builder.create();
+        alertDialogProfilePicture.show();
+
+        imageViewADPPCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkAndRequestPermissions()) {
+                    takePictureFromCamera();
+                    alertDialogProfilePicture.dismiss();
+                }
+            }
+        });
+
+        imageViewADPPGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                takePictureFromGallery();
+                alertDialogProfilePicture.dismiss();
+            }
+        });
     }
 
-    private void takePictureFromCamera() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, 2);
+    private void takePictureFromGallery(){
+        Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(pickPhoto, 1);
+    }
+
+    private void takePictureFromCamera(){
+        Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if(takePicture.resolveActivity(getPackageManager()) != null){
+            startActivityForResult(takePicture, 2);
         }
     }
 
@@ -81,26 +88,26 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode)
         {
             case 1:
-                if(resultCode == RESULT_OK) {
+                if(resultCode == RESULT_OK){
                     Uri selectedImageUri = data.getData();
                     imageViewProfilePicture.setImageURI(selectedImageUri);
                 }
-            break;
+                break;
             case 2:
                 if(resultCode == RESULT_OK){
-                    Bundle extras = data.getExtras();
-                    Bitmap imageBitmap = (Bitmap) extras.get("data");
-                    imageViewProfilePicture.setImageBitmap(imageBitmap);
+                    Bundle bundle = data.getExtras();
+                    Bitmap bitmapImage = (Bitmap) bundle.get("data");
+                    imageViewProfilePicture.setImageBitmap(bitmapImage);
                 }
-            break;
+                break;
         }
     }
 
-    private boolean checkAndRequestPermissions() {
-        if (Build.VERSION.SDK_INT >= 23) {
+    private boolean checkAndRequestPermissions(){
+        if(Build.VERSION.SDK_INT >= 23){
             int cameraPermission = ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA);
-            if (cameraPermission == PackageManager.PERMISSION_DENIED) {
-                ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.CAMERA}, permissionRequestId);
+            if(cameraPermission == PackageManager.PERMISSION_DENIED){
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA}, 20);
                 return false;
             }
         }
@@ -110,12 +117,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (grantResults[0] == PackageManager.PERMISSION_GRANTED &&
-                requestCode == permissionRequestId) {
+        if(requestCode == 20 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
             takePictureFromCamera();
         }
-        else{
-            Toast.makeText(MainActivity.this, "Permission not Granted...", Toast.LENGTH_SHORT).show();
-        }
+        else
+            Toast.makeText(MainActivity.this, "Permission not Granted", Toast.LENGTH_SHORT).show();
     }
 }
